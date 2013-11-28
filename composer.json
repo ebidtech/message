@@ -15,6 +15,7 @@
     "require": {
         "php": ">=5.4.0",
         "ebidtech/compress": "1.0.*",
+        "ebidtech/collection": "1.0.*",
         "doctrine/inflector": "1.*"
     },
     "require-dev": {
