@@ -89,4 +89,17 @@ class SimpleMessageTest extends TestCase
 
         $this->assertEquals($simpleMessageFromSerialize, $simpleMessageFromJson);
     }
+
+    /**
+     * @expectedException \EBT\Message\Exception\InvalidArgumentException
+     */
+    public function testFromStoreMissingKeys()
+    {
+        $compressorNull = new NullCompressor();
+        SimpleMessage::fromStore(
+            array(),
+            SimpleMessage::getStoreFormat($compressorNull),
+            $compressorNull
+        );
+    }
 }

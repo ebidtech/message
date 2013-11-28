@@ -25,12 +25,12 @@ class MessageStoreFormat
     /**
      * @var string
      */
-    private $format;
+    protected $format;
 
     /**
      * @var array
      */
-    private $recognizedFormats = array(self::JSON, self::SERIALIZE, self::PLAIN);
+    protected $recognizedFormats = array(self::JSON, self::SERIALIZE, self::PLAIN);
 
     /**
      * @param mixed $format
@@ -92,7 +92,7 @@ class MessageStoreFormat
      *
      * @return bool
      */
-    private function isRecognized($format)
+    protected function isRecognized($format)
     {
         return in_array((string) $format, $this->recognizedFormats);
     }

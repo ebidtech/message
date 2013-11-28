@@ -33,7 +33,7 @@ class Messages implements CollectionDirectInterface
     /**
      * @var MessageInterface[]
      */
-    private $collection = array();
+    protected $collection = array();
 
     /**
      * @param MessageInterface[] $messages

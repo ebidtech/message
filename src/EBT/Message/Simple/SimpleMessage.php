@@ -33,17 +33,17 @@ class SimpleMessage extends BaseMessage
     /**
      * @var mixed
      */
-    private $id;
+    protected $id;
 
     /**
      * @var mixed
      */
-    private $data;
+    protected $data;
 
     /**
      * @var bool
      */
-    private $urgent = self::DEFAULT_URGENT;
+    protected $urgent = self::DEFAULT_URGENT;
 
     /**
      * @param mixed       $id
@@ -111,7 +111,7 @@ class SimpleMessage extends BaseMessage
      */
     public static function getType()
     {
-        return new MessageType('simple');
+        return new MessageType(MessageType::SIMPLE);
     }
 
     /**

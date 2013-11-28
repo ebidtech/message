@@ -19,10 +19,13 @@ use Doctrine\Common\Inflector\Inflector;
  */
 class MessageType
 {
+    const SIMPLE = 'simpe';
+    const MSTOREFORMAT = 'mstoreformat';
+
     /**
      * @var string
      */
-    private $type;
+    protected $type;
 
     /**
      * @param string $type
@@ -44,13 +47,14 @@ class MessageType
      */
     public function getClassName()
     {
-        $typeCamel = ucfirst(Inflector::camelize($this->type));
-        $className = sprintf('EBT\\Message\\%s\\%sMessage', $typeCamel, $typeCamel);
-        if (!class_exists($className)) {
-            throw new InvalidArgumentException(sprintf('Message class "%s" do not exists.', $className));
+        $type = $this->type;
+        if (!$this->has($type)) {
+            throw new InvalidArgumentException(sprintf('Type "%s" not recognized', $type));
         }
 
-        return $className;
+        $mapping = $this->getMapping();
+
+        return $mapping[$type];
     }
 
     /**
@@ -59,5 +63,28 @@ class MessageType
     public function __toString()
     {
         return $this->type;
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return bool
+     */
+    protected function has($type)
+    {
+        $mapping = $this->getMapping();
+
+        return isset($mapping[$type]);
+    }
+
+    /**
+     * @return array
+     */
+    public function getMapping()
+    {
+        return array(
+            static::SIMPLE => 'EBT\\Message\\Simple\\SimpleMessage',
+            static::MSTOREFORMAT => 'EBT\\Message\\MStoreFormat\\MStoreFormatMessage'
+        );
     }
 }

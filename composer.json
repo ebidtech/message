@@ -14,9 +14,8 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
-        "ebidtech/compress": "1.0.*",
-        "ebidtech/collection": "1.0.*",
-        "doctrine/inflector": "1.*"
+        "ebidtech/compress": "1.1.*",
+        "ebidtech/collection": "1.0.*"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*",

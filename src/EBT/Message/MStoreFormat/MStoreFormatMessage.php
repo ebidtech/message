@@ -14,6 +14,7 @@ namespace EBT\Message\MStoreFormat;
 use EBT\Compress\CompressorInterface;
 use EBT\Message\Simple\SimpleMessage;
 use EBT\Message\MessageStoreFormat;
+use EBT\Message\MessageType;
 
 /**
  * MStoreFormatMessage
@@ -34,5 +35,13 @@ class MStoreFormatMessage extends SimpleMessage
         // having compression means that non utf8 chars can appear, JSON don't support it so lets go with plain
         // at a higher level will be serialized
         return new MessageStoreFormat(MessageStoreFormat::PLAIN);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function getType()
+    {
+        return new MessageType(MessageType::MSTOREFORMAT);
     }
 }

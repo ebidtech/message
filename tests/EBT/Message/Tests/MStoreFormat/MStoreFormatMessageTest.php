@@ -15,6 +15,7 @@ use EBT\Message\Tests\TestCase;
 use EBT\Message\MStoreFormat\MStoreFormatMessage;
 use EBT\Compress\NullCompressor;
 use EBT\Compress\GzencodeCompressor;
+use EBT\Message\MessageType;
 
 /**
  * MStoreFormatMessageTest
@@ -68,5 +69,10 @@ class MStoreFormatMessageTest extends TestCase
         );
 
         $this->assertEquals($simpleMessageFromSerialize, $simpleMessageFromJson);
+    }
+
+    public function testGetType()
+    {
+        $this->assertEquals(MessageType::MSTOREFORMAT, MStoreFormatMessage::getType());
     }
 }

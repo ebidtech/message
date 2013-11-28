@@ -19,7 +19,7 @@ trait MessageErrorTrait
     /**
      * @var bool|string
      */
-    private $error = false;
+    protected $error = false;
 
     /**
      * @param bool|string $error
