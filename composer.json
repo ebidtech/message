@@ -2,7 +2,7 @@
     "name": "ebidtech/message",
     "type": "library",
     "description": "Message wrapper",
-    "keywords": ["message", "php", "library", "transsport"],
+    "keywords": ["message", "php", "library", "transport"],
     "homepage": "http://github.com/ebidtech/message",
     "license": "MIT",
     "authors": [
