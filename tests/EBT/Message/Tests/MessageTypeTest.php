@@ -33,4 +33,16 @@ class MessageTypeTest extends TestCase
         $this->assertEquals(SimpleMessage::getType(), (string) $type);
         $this->assertEquals('EBT\\Message\\Simple\\SimpleMessage', $type->getClassName());
     }
+
+    /**
+     * @expectedException \EBT\Message\Exception\InvalidArgumentException
+     */
+    public function testReplaceMapping()
+    {
+        new MessageType(
+            SimpleMessage::getType(),
+            array(MessageType::MSTOREFORMAT => 'EBT\\Message\\MStoreFormat\\MStoreFormatMessage')
+        );
+
+    }
 }

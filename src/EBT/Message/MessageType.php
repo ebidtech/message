@@ -12,14 +12,13 @@
 namespace EBT\Message;
 
 use EBT\Message\Exception\InvalidArgumentException;
-use Doctrine\Common\Inflector\Inflector;
 
 /**
  * MessageType
  */
 class MessageType
 {
-    const SIMPLE = 'simpe';
+    const SIMPLE = 'simple';
     const MSTOREFORMAT = 'mstoreformat';
 
     /**
@@ -28,15 +27,29 @@ class MessageType
     protected $type;
 
     /**
-     * @param string $type
-     *
-     * @throws InvalidArgumentException
+     * @var array
      */
-    public function __construct($type)
+    protected static $mapping = array(
+        self::SIMPLE => 'EBT\\Message\\Simple\\SimpleMessage',
+        self::MSTOREFORMAT => 'EBT\\Message\\MStoreFormat\\MStoreFormatMessage'
+    );
+
+    /**
+     * @param string $type
+     * @param array  $mapping In case mapping is provided, the default mapping is replaced.
+     *                        In case you want to just add new message types you should:
+     *                        $mapping = array_merge(MessageType::getMapping(), array(// new mesages));
+     *                        $type = new MessageType($type, $mapping);
+     */
+    public function __construct($type, array $mapping = array())
     {
+        if ($mapping !== array()) {
+            static::$mapping = $mapping;
+        }
+
         $this->type = (string) $type;
 
-        // make sure the class exists
+        // make sure the type/class exists
         $this->getClassName();
     }
 
@@ -52,7 +65,7 @@ class MessageType
             throw new InvalidArgumentException(sprintf('Type "%s" not recognized', $type));
         }
 
-        $mapping = $this->getMapping();
+        $mapping = static::getMapping();
 
         return $mapping[$type];
     }
@@ -72,7 +85,7 @@ class MessageType
      */
     protected function has($type)
     {
-        $mapping = $this->getMapping();
+        $mapping = static::getMapping();
 
         return isset($mapping[$type]);
     }
@@ -80,11 +93,8 @@ class MessageType
     /**
      * @return array
      */
-    public function getMapping()
+    public static function getMapping()
     {
-        return array(
-            static::SIMPLE => 'EBT\\Message\\Simple\\SimpleMessage',
-            static::MSTOREFORMAT => 'EBT\\Message\\MStoreFormat\\MStoreFormatMessage'
-        );
+        return static::$mapping;
     }
 }
