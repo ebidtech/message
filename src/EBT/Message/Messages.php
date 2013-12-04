@@ -11,7 +11,6 @@
 
 namespace EBT\Message;
 
-use EBT\Collection\CollectionDirectAccessInterface;
 use EBT\Collection\IterableTrait;
 use EBT\Collection\CountableTrait;
 use EBT\Collection\EmptyTrait;
@@ -22,7 +21,7 @@ use EBT\Message\Exception\InvalidArgumentException;
 /**
  * Messages
  */
-class Messages implements CollectionDirectAccessInterface
+class Messages implements MessagesInterface
 {
     use IterableTrait;
     use CountableTrait;
