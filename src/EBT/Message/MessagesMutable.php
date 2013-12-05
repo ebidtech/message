@@ -29,7 +29,7 @@ class MessagesMutable implements MessagesMutableInterface
     use DirectAccessTrait;
     use GetCollectionTrait;
     use MessagesAddTrait {
-        add as public;
+        add as public ;
     }
 
     /**
