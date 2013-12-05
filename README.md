@@ -2,6 +2,8 @@
 
 Message wrapper and messaging interfaces.
 
+[![Latest Stable Version](https://poser.pugx.org/ebidtech/message/v/stable.png)](https://packagist.org/packages/ebidtech/message) [![Build Status](https://travis-ci.org/ebidtech/message.png?branch=master)](https://travis-ci.org/ebidtech/message)
+
 ## Requirements ##
 
 * PHP >= 5.4
