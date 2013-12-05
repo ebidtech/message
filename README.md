@@ -47,10 +47,10 @@ See CONTRIBUTING file.
 
 ## Credits ##
 
-* Ebidtech developer team, compress Lead developer [Eduardo Oliveira](https://github.com/entering) (eduardo.oliveira@ebidtech.com).
+* Ebidtech developer team, message Lead developer [Eduardo Oliveira](https://github.com/entering) (eduardo.oliveira@ebidtech.com).
 * [All contributors](https://github.com/ebidtech/message/contributors)
 
 ## License ##
 
-Compress library is released under the MIT License. See the bundled LICENSE file for details.
+Message library is released under the MIT License. See the bundled LICENSE file for details.
 
