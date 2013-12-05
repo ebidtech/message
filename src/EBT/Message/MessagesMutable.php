@@ -19,16 +19,18 @@ use EBT\Collection\GetCollectionTrait;
 use EBT\Message\Exception\InvalidArgumentException;
 
 /**
- * Messages
+ * MessagesMutable
  */
-class Messages implements MessagesInterface
+class MessagesMutable implements MessagesMutableInterface
 {
     use IterableTrait;
     use CountableTrait;
     use EmptyTrait;
     use DirectAccessTrait;
     use GetCollectionTrait;
-    use MessagesAddTrait;
+    use MessagesAddTrait {
+        add as public;
+    }
 
     /**
      * @var MessageInterface[]
@@ -45,5 +47,29 @@ class Messages implements MessagesInterface
         foreach ($messages as $message) {
             $this->add($message);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function remove($messageId)
+    {
+        unset($this->collection[$messageId]);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function clear()
+    {
+        $this->collection = array();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toMessages()
+    {
+        return new Messages($this->getCollection());
     }
 }
