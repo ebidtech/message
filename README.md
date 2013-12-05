@@ -2,7 +2,7 @@
 
 Message wrapper and messaging interfaces.
 
-[![Latest Stable Version](https://poser.pugx.org/ebidtech/message/v/stable.png)](https://packagist.org/packages/ebidtech/message) [![Build Status](https://travis-ci.org/ebidtech/message.png?branch=master)](https://travis-ci.org/ebidtech/message) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/ebidtech/message/badges/quality-score.png?s=a87177d092925001152c5512791005e4e3cd728c)](https://scrutinizer-ci.com/g/ebidtech/message/)
+[![Latest Stable Version](https://poser.pugx.org/ebidtech/message/v/stable.png)](https://packagist.org/packages/ebidtech/message) [![Build Status](https://travis-ci.org/ebidtech/message.png?branch=master)](https://travis-ci.org/ebidtech/message) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/ebidtech/message/badges/quality-score.png?s=a87177d092925001152c5512791005e4e3cd728c)](https://scrutinizer-ci.com/g/ebidtech/message/) [![Dependency Status](https://www.versioneye.com/user/projects/52a0ca7a632bac3588000041/badge.png)](https://www.versioneye.com/user/projects/52a0ca7a632bac3588000041)
 
 ## Requirements ##
 
