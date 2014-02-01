@@ -31,7 +31,7 @@ trait MessagesAddTrait
             throw new InvalidArgumentException(sprintf('Found duplicate messages with ID: "%s"', $messageId));
         }
 
-        $this->collection[$messageId] = $message;
+        $this->items[$messageId] = $message;
     }
 
     /**

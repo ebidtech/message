@@ -15,7 +15,7 @@ use EBT\Collection\IterableTrait;
 use EBT\Collection\CountableTrait;
 use EBT\Collection\EmptyTrait;
 use EBT\Collection\DirectAccessTrait;
-use EBT\Collection\GetCollectionTrait;
+use EBT\Collection\GetItemsTrait;
 use EBT\Message\Exception\InvalidArgumentException;
 
 /**
@@ -27,7 +27,7 @@ class MessagesMutable implements MessagesMutableInterface
     use CountableTrait;
     use EmptyTrait;
     use DirectAccessTrait;
-    use GetCollectionTrait;
+    use GetItemsTrait;
     use MessagesAddTrait {
         add as public ;
     }
@@ -35,7 +35,7 @@ class MessagesMutable implements MessagesMutableInterface
     /**
      * @var MessageInterface[]
      */
-    protected $collection = array();
+    protected $items = array();
 
     /**
      * @param MessageInterface[] $messages
@@ -54,7 +54,7 @@ class MessagesMutable implements MessagesMutableInterface
      */
     public function remove($messageId)
     {
-        unset($this->collection[$messageId]);
+        unset($this->items[$messageId]);
     }
 
     /**
@@ -62,7 +62,7 @@ class MessagesMutable implements MessagesMutableInterface
      */
     public function clear()
     {
-        $this->collection = array();
+        $this->items = array();
     }
 
     /**
@@ -70,6 +70,6 @@ class MessagesMutable implements MessagesMutableInterface
      */
     public function toMessages()
     {
-        return new Messages($this->getCollection());
+        return new Messages($this->getItems());
     }
 }

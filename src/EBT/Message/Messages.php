@@ -15,7 +15,7 @@ use EBT\Collection\IterableTrait;
 use EBT\Collection\CountableTrait;
 use EBT\Collection\EmptyTrait;
 use EBT\Collection\DirectAccessTrait;
-use EBT\Collection\GetCollectionTrait;
+use EBT\Collection\GetItemsTrait;
 use EBT\Message\Exception\InvalidArgumentException;
 
 /**
@@ -27,13 +27,13 @@ class Messages implements MessagesInterface
     use CountableTrait;
     use EmptyTrait;
     use DirectAccessTrait;
-    use GetCollectionTrait;
+    use GetItemsTrait;
     use MessagesAddTrait;
 
     /**
      * @var MessageInterface[]
      */
-    protected $collection = array();
+    protected $items = array();
 
     /**
      * @param MessageInterface[] $messages
