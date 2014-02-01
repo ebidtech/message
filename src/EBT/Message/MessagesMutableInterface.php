@@ -11,11 +11,20 @@
 
 namespace EBT\Message;
 
+use EBT\Message\Exception\InvalidArgumentException;
+
 /**
  * MessagesMutableInterface
  */
 interface MessagesMutableInterface extends MessagesInterface
 {
+    /**
+     * @param MessageInterface $message
+     *
+     * @throws InvalidArgumentException
+     */
+    public function add(MessageInterface $message);
+
     /**
      * @param int $messageId
      */

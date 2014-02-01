@@ -28,7 +28,6 @@ class Messages implements MessagesInterface
     use EmptyTrait;
     use DirectAccessTrait;
     use GetItemsTrait;
-    use MessagesAddTrait;
 
     /**
      * @var MessageInterface[]
@@ -43,7 +42,23 @@ class Messages implements MessagesInterface
     public function __construct(array $messages = array())
     {
         foreach ($messages as $message) {
-            $this->add($message);
+            $this->addInternal($message);
         }
+    }
+
+    /**
+     * @param MessageInterface $message
+     *
+     * @throws InvalidArgumentException
+     */
+    protected function addInternal(MessageInterface $message)
+    {
+        $messageId = $message->getId();
+
+        if ($this->get($messageId) instanceof MessageInterface) {
+            throw new InvalidArgumentException(sprintf('Found duplicate messages with ID: "%s"', $messageId));
+        }
+
+        $this->items[$messageId] = $message;
     }
 }

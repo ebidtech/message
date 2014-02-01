@@ -47,6 +47,7 @@ class MessagesMutableTest extends TestCase
     {
         $messagesMutable = new MessagesMutable(array(new SimpleMessage(1, 'payload1')));
         $messages = $messagesMutable->toMessages();
+        $this->assertInstanceOf('EBT\Message\Messages', $messages);
         $this->assertCount(1, $messages);
     }
 }

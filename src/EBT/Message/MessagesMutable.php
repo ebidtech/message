@@ -21,16 +21,13 @@ use EBT\Message\Exception\InvalidArgumentException;
 /**
  * MessagesMutable
  */
-class MessagesMutable implements MessagesMutableInterface
+class MessagesMutable extends Messages implements MessagesMutableInterface
 {
     use IterableTrait;
     use CountableTrait;
     use EmptyTrait;
     use DirectAccessTrait;
     use GetItemsTrait;
-    use MessagesAddTrait {
-        add as public ;
-    }
 
     /**
      * @var MessageInterface[]
@@ -47,6 +44,16 @@ class MessagesMutable implements MessagesMutableInterface
         foreach ($messages as $message) {
             $this->add($message);
         }
+    }
+
+    /**
+     * @param MessageInterface $message
+     *
+     * @throws InvalidArgumentException
+     */
+    public function add(MessageInterface $message)
+    {
+        $this->addInternal($message);
     }
 
     /**
@@ -70,6 +77,6 @@ class MessagesMutable implements MessagesMutableInterface
      */
     public function toMessages()
     {
-        return new Messages($this->getItems());
+        return new parent($this->getItems());
     }
 }
